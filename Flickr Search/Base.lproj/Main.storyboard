@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,13 +18,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ogy-IM-JfX">
                             <size key="itemSize" width="213" height="282"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="headerReferenceSize" width="50" height="90"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FlickrCell" id="270-4o-Rb9" customClass="FlickrPhotoCell" customModule="Flickr_Search" customModuleProvider="target">
-                                <rect key="frame" x="90" y="0.0" width="213" height="282"/>
+                                <rect key="frame" x="90" y="90" width="213" height="282"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="QPI-7f-CMt">
                                     <rect key="frame" x="0.0" y="0.0" width="213" height="282"/>
@@ -50,6 +51,26 @@
                                 </connections>
                             </collectionViewCell>
                         </cells>
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="FlickrPhotoHeaderView" id="Ubw-Vu-q5b" customClass="FlickrPhotoHeaderView" customModule="Flickr_Search" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="90"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2gw-OQ-VUE">
+                                    <rect key="frame" x="161" y="27" width="71" height="36"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                            <constraints>
+                                <constraint firstItem="2gw-OQ-VUE" firstAttribute="centerY" secondItem="Ubw-Vu-q5b" secondAttribute="centerY" id="bw7-bu-70J"/>
+                                <constraint firstItem="2gw-OQ-VUE" firstAttribute="centerX" secondItem="Ubw-Vu-q5b" secondAttribute="centerX" id="tgG-eY-Jcn"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="titleLabel" destination="2gw-OQ-VUE" id="eUd-TI-TDo"/>
+                            </connections>
+                        </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="Wcj-gm-InY" id="DDa-dg-IWg"/>
                             <outlet property="delegate" destination="Wcj-gm-InY" id="xyJ-Hg-NYb"/>
@@ -91,4 +112,9 @@
             <point key="canvasLocation" x="216.80000000000001" y="30.134932533733135"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>
