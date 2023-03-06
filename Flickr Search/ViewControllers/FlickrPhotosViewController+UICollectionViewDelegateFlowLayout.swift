@@ -12,6 +12,14 @@ import UIKit
 extension FlickrPhotosViewController: UICollectionViewDelegateFlowLayout {
     // 1
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if indexPath == largePhotoIndexPath {
+            let flickrPhoto = photo(for: indexPath)
+            var size = collectionView.bounds.size
+            size.height -= (FlickrConstants.sectionInsets.top + FlickrConstants.sectionInsets.right)
+            size.width -= (FlickrConstants.sectionInsets.left + FlickrConstants.sectionInsets.right)
+            return flickrPhoto.sizeToFillWidth(of: size)
+        }
+
         // 2
         let paddingSpace = FlickrConstants.sectionInsets.left * (FlickrConstants.itemsPerRow + 1)
         let availableWidth = view.frame.width - paddingSpace

@@ -32,4 +32,34 @@ extension FlickrPhotosViewController {
         
         return cell
     }
+    
+    override func collectionView(
+      _ collectionView: UICollectionView,
+      viewForSupplementaryElementOfKind kind: String,
+      at indexPath: IndexPath
+    ) -> UICollectionReusableView {
+      switch kind {
+      // 1
+      case UICollectionView.elementKindSectionHeader:
+        // 2
+        let headerView = collectionView.dequeueReusableSupplementaryView(
+          ofKind: kind,
+          withReuseIdentifier: "\(FlickrPhotoHeaderView.self)",
+          for: indexPath)
+
+        // 3
+        guard let typedHeaderView = headerView as? FlickrPhotoHeaderView
+        else { return headerView }
+
+        // 4
+        let searchTerm = searches[indexPath.section].searchTerm
+        typedHeaderView.titleLabel.text = searchTerm
+        return typedHeaderView
+      default:
+        // 5
+        assert(false, "Invalid element type")
+      }
+    }
+
+    
 }

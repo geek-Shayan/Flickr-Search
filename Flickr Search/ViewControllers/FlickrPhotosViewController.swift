@@ -5,16 +5,13 @@
 //  Created by MD. SHAYANUL HAQ SADI on 27/2/23.
 //
 
-
 import UIKit
-
 
 enum FlickrConstants {
     static let reuseIdentifier = "FlickrCell"
     static let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
     static let itemsPerRow: CGFloat = 3
 }
-
 
 final class FlickrPhotosViewController: UICollectionViewController {
     // MARK: - Properties
@@ -25,27 +22,51 @@ final class FlickrPhotosViewController: UICollectionViewController {
 
 //    private let itemsPerRow: CGFloat = 3
 
+    
     var searches: [FlickrSearchResults] = []
     let flickr = Flickr()
+    
+    
+    // 1
+    var largePhotoIndexPath: IndexPath? {
+        didSet {
+            // 2
+            var indexPaths: [IndexPath] = []
+            if let largePhotoIndexPath = largePhotoIndexPath {
+                indexPaths.append(largePhotoIndexPath)
+            }
+
+            if let oldValue = oldValue {
+                indexPaths.append(oldValue)
+            }
+
+            // 3
+            collectionView.performBatchUpdates({
+                self.collectionView.reloadItems(at: indexPaths)
+            }, completion: { _ in
+                // 4
+                if let largePhotoIndexPath = self.largePhotoIndexPath {
+                    self.collectionView.scrollToItem(at: largePhotoIndexPath, at: .centeredVertically, animated: true)
+                }
+            })
+        }
+    }
+
 }
-
-
 
 
 //// MARK: - Private
 //
-//private extension FlickrPhotosViewController {
+// private extension FlickrPhotosViewController {
 //    func photo(for indexPath: IndexPath) -> FlickrPhoto {
 //        return searches[indexPath.section].searchResults[indexPath.row]
 //    }
-//}
-
-
+// }
 
 //
 //// MARK: - Text Field Delegate
 //
-//extension FlickrPhotosViewController: UITextFieldDelegate {
+// extension FlickrPhotosViewController: UITextFieldDelegate {
 //    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 //        guard
 //            let text = textField.text,
@@ -83,14 +104,12 @@ final class FlickrPhotosViewController: UICollectionViewController {
 //        textField.resignFirstResponder()
 //        return true
 //    }
-//}
+// }
 //
-
-
 
 //// MARK: - UICollectionViewDataSource
 //
-//extension FlickrPhotosViewController {
+// extension FlickrPhotosViewController {
 //    // 1
 //    override func numberOfSections(in collectionView: UICollectionView) -> Int {
 //        return searches.count
@@ -120,17 +139,11 @@ final class FlickrPhotosViewController: UICollectionViewController {
 //        // Configure the cell
 //        return cell
 //    }
-//}
-
-
-
-
-
-
+// }
 
 //// MARK: - Collection View Flow Layout Delegate
 //
-//extension FlickrPhotosViewController: UICollectionViewDelegateFlowLayout {
+// extension FlickrPhotosViewController: UICollectionViewDelegateFlowLayout {
 //    // 1
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 //        // 2
@@ -150,4 +163,4 @@ final class FlickrPhotosViewController: UICollectionViewController {
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
 //        return sectionInsets.left
 //    }
-//}
+// }

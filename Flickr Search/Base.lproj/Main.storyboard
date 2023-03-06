@@ -17,35 +17,34 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ogy-IM-JfX">
-                            <size key="itemSize" width="213" height="282"/>
+                            <size key="itemSize" width="184" height="164"/>
                             <size key="headerReferenceSize" width="50" height="90"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FlickrCell" id="270-4o-Rb9" customClass="FlickrPhotoCell" customModule="Flickr_Search" customModuleProvider="target">
-                                <rect key="frame" x="90" y="90" width="213" height="282"/>
+                                <rect key="frame" x="96.666666666666671" y="90" width="200" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="QPI-7f-CMt">
-                                    <rect key="frame" x="0.0" y="0.0" width="213" height="282"/>
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="BQ8-tt-b79">
+                                    <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yvY-hg-jL2">
-                                            <rect key="frame" x="0.0" y="0.0" width="213" height="282"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="100" id="FZn-s5-62k"/>
-                                                <constraint firstAttribute="height" constant="100" id="z8V-Zc-2ac"/>
-                                            </constraints>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yvY-hg-jL2">
+                                            <rect key="frame" x="49" y="28" width="123" height="134"/>
                                         </imageView>
+                                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="UiO-rr-puS">
+                                            <rect key="frame" x="81.666666666666671" y="81.666666666666671" width="37" height="37"/>
+                                        </activityIndicatorView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="yvY-hg-jL2" secondAttribute="bottom" id="FqP-f7-vtG"/>
-                                        <constraint firstAttribute="trailing" secondItem="yvY-hg-jL2" secondAttribute="trailing" id="aSh-Fx-HyQ"/>
-                                        <constraint firstItem="yvY-hg-jL2" firstAttribute="leading" secondItem="QPI-7f-CMt" secondAttribute="leading" id="pCr-wx-P86"/>
-                                        <constraint firstItem="yvY-hg-jL2" firstAttribute="top" secondItem="QPI-7f-CMt" secondAttribute="top" id="qGU-HG-wsr"/>
+                                        <constraint firstItem="UiO-rr-puS" firstAttribute="centerX" secondItem="BQ8-tt-b79" secondAttribute="centerX" id="Ofh-cZ-KF0"/>
+                                        <constraint firstItem="yvY-hg-jL2" firstAttribute="centerX" secondItem="BQ8-tt-b79" secondAttribute="centerX" id="Tnp-4O-4d5"/>
+                                        <constraint firstItem="yvY-hg-jL2" firstAttribute="centerY" secondItem="BQ8-tt-b79" secondAttribute="centerY" id="Vsh-ks-wFj"/>
+                                        <constraint firstItem="UiO-rr-puS" firstAttribute="centerY" secondItem="BQ8-tt-b79" secondAttribute="centerY" id="j0G-j8-3Mo"/>
                                     </constraints>
                                 </collectionViewCellContentView>
-                                <size key="customSize" width="213" height="282"/>
+                                <size key="customSize" width="200" height="200"/>
                                 <connections>
                                     <outlet property="imageView" destination="yvY-hg-jL2" id="9zE-48-Qa2"/>
                                 </connections>
