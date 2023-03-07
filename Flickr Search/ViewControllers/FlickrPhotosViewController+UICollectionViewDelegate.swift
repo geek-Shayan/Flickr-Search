@@ -8,19 +8,35 @@
 import UIKit
 
 extension FlickrPhotosViewController {
-  override func collectionView(
-    _ collectionView: UICollectionView,
-    shouldSelectItemAt indexPath: IndexPath
-  ) -> Bool {
-    // 1
-    if largePhotoIndexPath == indexPath {
-      largePhotoIndexPath = nil
-    } else {
-      largePhotoIndexPath = indexPath
+    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        guard !isSharing else {
+          return true
+        }
+        
+        
+        // 1
+        if largePhotoIndexPath == indexPath {
+            largePhotoIndexPath = nil
+        } else {
+            largePhotoIndexPath = indexPath
+        }
+
+        // 2
+        return false
+    }
+    
+    
+    override func collectionView(
+      _ collectionView: UICollectionView,
+      didSelectItemAt indexPath: IndexPath
+    ) {
+      guard isSharing else {
+        return
+      }
+
+      let flickrPhoto = photo(for: indexPath)
+      selectedPhotos.append(flickrPhoto)
+      updateSharedPhotoCountLabel()
     }
 
-    // 2
-    return false
-  }
 }
-

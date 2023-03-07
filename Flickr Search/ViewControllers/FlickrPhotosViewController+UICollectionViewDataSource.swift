@@ -21,17 +21,58 @@ extension FlickrPhotosViewController {
     }
     
     // 3
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        // 1
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FlickrConstants.reuseIdentifier, for: indexPath) as! FlickrPhotoCell
-        // 2
-        let flickrPhoto = photo(for: indexPath)
-        cell.backgroundColor = .white
-        // 3
+//    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        // 1
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FlickrConstants.reuseIdentifier, for: indexPath) as! FlickrPhotoCell
+//        // 2
+//        let flickrPhoto = photo(for: indexPath)
+//        cell.backgroundColor = .white
+//        // 3
+//        cell.imageView.image = flickrPhoto.thumbnail
+//
+//        return cell
+//    }
+    override func collectionView(
+      _ collectionView: UICollectionView,
+      cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
+      guard let cell = collectionView.dequeueReusableCell(
+        withReuseIdentifier: FlickrConstants.reuseIdentifier,
+        for: indexPath) as? FlickrPhotoCell
+      else {
+        preconditionFailure("Invalid cell type")
+      }
+
+      let flickrPhoto = photo(for: indexPath)
+
+      // 1
+      cell.activityIndicator.stopAnimating()
+
+      // 2
+      guard indexPath == largePhotoIndexPath else {
         cell.imageView.image = flickrPhoto.thumbnail
-        
         return cell
+      }
+
+      // 3
+      cell.isSelected = true
+      guard flickrPhoto.largeImage == nil else {
+        cell.imageView.image = flickrPhoto.largeImage
+        return cell
+      }
+
+      // 4
+      cell.imageView.image = flickrPhoto.thumbnail
+
+      // 5
+      performLargeImageFetch(for: indexPath, flickrPhoto: flickrPhoto, cell: cell)
+
+      return cell
     }
+
+    
+    
+    
     
     override func collectionView(
       _ collectionView: UICollectionView,

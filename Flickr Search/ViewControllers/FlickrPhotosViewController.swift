@@ -16,17 +16,56 @@ enum FlickrConstants {
 final class FlickrPhotosViewController: UICollectionViewController {
     // MARK: - Properties
 
+    var selectedPhotos: [FlickrPhoto] = []
+    let shareTextLabel = UILabel()
+//    var isSharing = false
+    var isSharing = false {
+        didSet {
+            // 1
+            collectionView.allowsMultipleSelection = isSharing
+
+            // 2
+            collectionView.selectItem(at: nil, animated: true, scrollPosition: [])
+            selectedPhotos.removeAll()
+
+            guard let shareButton = navigationItem.rightBarButtonItems?.first else {
+                return
+            }
+
+            // 3
+            guard isSharing else {
+                navigationItem.setRightBarButtonItems([shareButton], animated: true)
+                return
+            }
+
+            // 4
+            if largePhotoIndexPath != nil {
+                largePhotoIndexPath = nil
+            }
+
+            // 5
+            updateSharedPhotoCountLabel()
+
+            // 6
+            let sharingItem = UIBarButtonItem(customView: shareTextLabel)
+            let items: [UIBarButtonItem] = [
+                shareButton,
+                sharingItem
+            ]
+
+            navigationItem.setRightBarButtonItems(items, animated: true)
+        }
+    }
+
 //    private let reuseIdentifier = "FlickrCell"
 
 //    private let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
 
 //    private let itemsPerRow: CGFloat = 3
 
-    
     var searches: [FlickrSearchResults] = []
     let flickr = Flickr()
-    
-    
+
     // 1
     var largePhotoIndexPath: IndexPath? {
         didSet {
@@ -52,8 +91,62 @@ final class FlickrPhotosViewController: UICollectionViewController {
         }
     }
 
-}
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        collectionView.dragInteractionEnabled = true
+        collectionView.dragDelegate = self
+        collectionView.dropDelegate = self
+    }
 
+    @IBAction func shareButtonTapped(_ sender: UIBarButtonItem) {
+        // 1
+        guard !searches.isEmpty else {
+            return
+        }
+
+        // 2
+        guard !selectedPhotos.isEmpty else {
+            isSharing.toggle()
+            return
+        }
+
+        // 3
+        guard isSharing else {
+            return
+        }
+
+        // 1
+        let images: [UIImage] = selectedPhotos.compactMap { photo in
+            guard let thumbnail = photo.thumbnail else {
+                return nil
+            }
+
+            return thumbnail
+        }
+
+        // 2
+        guard !images.isEmpty else {
+            return
+        }
+
+        // 3
+        let shareController = UIActivityViewController(
+            activityItems: images,
+            applicationActivities: nil)
+
+        // 4
+        shareController.completionWithItemsHandler = { _, _, _, _ in
+            self.isSharing = false
+            self.selectedPhotos.removeAll()
+            self.updateSharedPhotoCountLabel()
+        }
+
+        // 5
+        shareController.popoverPresentationController?.barButtonItem = sender
+        shareController.popoverPresentationController?.permittedArrowDirections = .any
+        present(shareController, animated: true, completion: nil)
+    }
+}
 
 //// MARK: - Private
 //

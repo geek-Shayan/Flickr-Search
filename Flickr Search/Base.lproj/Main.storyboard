@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="D5M-6f-jgm">
-    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <device id="retina6_12" orientation="portrait" appearance="dark"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -17,35 +17,38 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ogy-IM-JfX">
-                            <size key="itemSize" width="184" height="164"/>
+                            <size key="itemSize" width="152" height="168"/>
                             <size key="headerReferenceSize" width="50" height="90"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FlickrCell" id="270-4o-Rb9" customClass="FlickrPhotoCell" customModule="Flickr_Search" customModuleProvider="target">
-                                <rect key="frame" x="96.666666666666671" y="90" width="200" height="200"/>
+                                <rect key="frame" x="0.0" y="90" width="150" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="BQ8-tt-b79">
-                                    <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="m7P-bL-BgM">
+                                    <rect key="frame" x="0.0" y="0.0" width="150" height="200"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yvY-hg-jL2">
-                                            <rect key="frame" x="49" y="28" width="123" height="134"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yvY-hg-jL2">
+                                            <rect key="frame" x="0.0" y="0.0" width="150" height="200"/>
                                         </imageView>
                                         <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="UiO-rr-puS">
-                                            <rect key="frame" x="81.666666666666671" y="81.666666666666671" width="37" height="37"/>
+                                            <rect key="frame" x="56.666666666666657" y="81.666666666666671" width="37" height="37"/>
                                         </activityIndicatorView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="UiO-rr-puS" firstAttribute="centerX" secondItem="BQ8-tt-b79" secondAttribute="centerX" id="Ofh-cZ-KF0"/>
-                                        <constraint firstItem="yvY-hg-jL2" firstAttribute="centerX" secondItem="BQ8-tt-b79" secondAttribute="centerX" id="Tnp-4O-4d5"/>
-                                        <constraint firstItem="yvY-hg-jL2" firstAttribute="centerY" secondItem="BQ8-tt-b79" secondAttribute="centerY" id="Vsh-ks-wFj"/>
-                                        <constraint firstItem="UiO-rr-puS" firstAttribute="centerY" secondItem="BQ8-tt-b79" secondAttribute="centerY" id="j0G-j8-3Mo"/>
+                                        <constraint firstItem="UiO-rr-puS" firstAttribute="centerY" secondItem="m7P-bL-BgM" secondAttribute="centerY" id="Az8-FC-uYK"/>
+                                        <constraint firstItem="UiO-rr-puS" firstAttribute="centerX" secondItem="m7P-bL-BgM" secondAttribute="centerX" id="XBC-uh-s7x"/>
+                                        <constraint firstItem="yvY-hg-jL2" firstAttribute="centerX" secondItem="m7P-bL-BgM" secondAttribute="centerX" id="ahL-Sw-JPP"/>
+                                        <constraint firstItem="yvY-hg-jL2" firstAttribute="centerY" secondItem="m7P-bL-BgM" secondAttribute="centerY" id="cfb-wh-3po"/>
+                                        <constraint firstItem="yvY-hg-jL2" firstAttribute="top" secondItem="m7P-bL-BgM" secondAttribute="top" id="lko-l0-hI0"/>
+                                        <constraint firstItem="yvY-hg-jL2" firstAttribute="leading" secondItem="m7P-bL-BgM" secondAttribute="leading" id="tRa-E3-CXz"/>
                                     </constraints>
                                 </collectionViewCellContentView>
-                                <size key="customSize" width="200" height="200"/>
+                                <size key="customSize" width="150" height="200"/>
                                 <connections>
+                                    <outlet property="activityIndicator" destination="UiO-rr-puS" id="hSp-T5-DaG"/>
                                     <outlet property="imageView" destination="yvY-hg-jL2" id="9zE-48-Qa2"/>
                                 </connections>
                             </collectionViewCell>
@@ -86,6 +89,11 @@
                                 <outlet property="delegate" destination="Wcj-gm-InY" id="B8H-j7-7DS"/>
                             </connections>
                         </textField>
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="lza-rW-7Mz">
+                            <connections>
+                                <action selector="shareButtonTapped:" destination="Wcj-gm-InY" id="1NP-3k-eew"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DqP-th-hVJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
