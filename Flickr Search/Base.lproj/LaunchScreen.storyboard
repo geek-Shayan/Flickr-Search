@@ -16,18 +16,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rwdevcon-bg" translatesAutoresizingMaskIntoConstraints="NO" id="fFo-x4-AGM">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fFo-x4-AGM">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rw-logo" translatesAutoresizingMaskIntoConstraints="NO" id="NuD-8d-XR1">
-                                <rect key="frame" x="20" y="249.66666666666663" width="353" height="353"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="magnifyingglass.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="NuD-8d-XR1">
+                                <rect key="frame" x="20" y="250.66666666666666" width="353" height="351.66666666666663"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="NuD-8d-XR1" secondAttribute="height" multiplier="1:1" id="A71-RG-ywF"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemPinkColor"/>
+                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="fFo-x4-AGM" secondAttribute="trailing" id="3um-Pe-om0"/>
                             <constraint firstItem="fFo-x4-AGM" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="DkA-LZ-nZS"/>
@@ -45,10 +45,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="rw-logo" width="512" height="512"/>
-        <image name="rwdevcon-bg" width="1104" height="1104"/>
-        <systemColor name="systemPinkColor">
-            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <image name="bg" width="1104" height="1104"/>
+        <image name="magnifyingglass.circle" catalog="system" width="128" height="123"/>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
